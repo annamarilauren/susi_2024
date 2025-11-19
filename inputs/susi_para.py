@@ -157,8 +157,8 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'fertilization': {
                 'application year': 2201,
                 'N':{'dose': 0.0, 'decay_k': 0.5, 'eff': 1.0},                              # fertilization dose in kg ha-1, decay_k in yr-1
-                'P':{'dose': 45.0, 'decay_k': 0.2, 'eff': 1.0},
-                'K':{'dose': 100.0, 'decay_k': 0.3, 'eff': 1.0},
+                'P':{'dose': 45.0, 'decay_k': 0.075, 'eff': 1.0},
+                'K':{'dose': 100.0, 'decay_k': 0.075, 'eff': 1.0},
                 'pH_increment':1.0},  
 
         'canopylayers': {'dominant': np.ones((int(n)), dtype=int),

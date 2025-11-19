@@ -38,9 +38,26 @@ humus =[6.9, 5.8, 7.0, 5.5, 5.2,                 #20yrs spinoff
         7.0, 5.4, 7.0, 5.5, 4.9,
         6.9, 5.9, 7.2, 6.0, 5.2
         ]
+#humus = np.ones(len(humus))*2.0
+
 for stand, weather_input,outname,sitetype,hum in zip(stands, weather_inputs,outnames, sfcs, humus):
     #***************** local call for SUSI*****************************************************
-    folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/mikko_niemi//outputs/' #_shallow/' 
+    #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/mikko_niemi//outputs/' #_shallow/' 
+    folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/mikko_niemi//outputs_shallow/' #_shallow/' 
+    #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/mikko_niemi//outputs_no_shallow/' #_shallow/' 
+    
+    
+    #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/ash_2025/ash_shallowing/' #_shallow/' 
+    #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/ash_2025/ash_double/' #_shallow/' 
+    #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/ash_2025/ash_half/' #_shallow/' 
+    #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/ash_2025/control_no_mor/' #_shallow/' 
+    #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/ash_2025/no_mor_50K/' #_shallow/' 
+    #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/ash_2025/mor_2cm_control/' #_shallow/' 
+    #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/ash_2025/mor_2cm_100K/' #_shallow/' 
+    #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/ash_2025/mor_2cm_200K/' #_shallow/' 
+    #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/ash_2025/mor_2cm_50K/' #_shallow/' 
+    
+    
     wpath = r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/mikko_niemi/weather_data/'
     
     
@@ -81,6 +98,12 @@ for stand, weather_input,outname,sitetype,hum in zip(stands, weather_inputs,outn
     #spara['canopylayers']['dominant'][int(n/2):] = 2                                                                        
     #spara['canopylayers']['subdominant'][:int(n/2)] = 1                                                                        
     #spara['cutting_yr'] = 3001
+    spara['fertilization']['application year'] = 3004
+    spara['fertilization']['P']['decay_k'] = 0.075
+    spara['fertilization']['K']['decay_k'] = 0.075
+    spara['fertilization']['K']['dose'] = 50.
+    spara['fertilization']['P']['dose'] = 22.5
+
     spara['drain_age'] =  100.
     mass_mor = hum # 1.616*np.log(spara['drain_age'])-1.409     #Pitkänen et al. 2012 Forest Ecology and Management 284 (2012) 100–106
     
@@ -100,10 +123,10 @@ for stand, weather_input,outname,sitetype,hum in zip(stands, weather_inputs,outn
     
     spara['ditch depth west'] = [-0.3, -0.6, -0.9]   #nLyrs kerrosten lkm, dzLyr kerroksen paksuus m, saran levys m, n laskentasolmulen lukumäärä, ditch depth pjan syvyys simuloinnin alussa m  
     spara['ditch depth east'] = [-0.3, -0.6, -0.9]
-    #spara['ditch depth 20y west'] = [-0.2, -0.4, -0.6]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
-    #para['ditch depth 20y east'] = [-0.2, -0.4, -0.6]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
-    spara['ditch depth 20y west'] = [-0.3, -0.6, -0.9]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
-    spara['ditch depth 20y east'] = [-0.3, -0.6, -0.9]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
+    spara['ditch depth 20y west'] = [-0.2, -0.4, -0.6]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
+    spara['ditch depth 20y east'] = [-0.2, -0.4, -0.6]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
+    #spara['ditch depth 20y west'] = [-0.3, -0.6, -0.9]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
+    #spara['ditch depth 20y east'] = [-0.3, -0.6, -0.9]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
     
     spara['scenario name'] =  ['D30', 'D60','D90']                                #kasvunlisaykset
     
@@ -137,6 +160,7 @@ outnames = ['SF_22.nc','SF_31.nc','SF_32.nc','SF_41.nc','SF_51.nc',
             ]
 
 #folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/codes/susi_11/outputs/' #'sensitivity/'
+#folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/mikko_niemi//outputs/'
 folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/mikko_niemi//outputs/'
 
 for outn in outnames:

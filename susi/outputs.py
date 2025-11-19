@@ -745,7 +745,7 @@ class Outputs():
     
     def write_methane(self, scen, year, ch4):
         self.ncf['methane']['ch4'][scen, year, :] = ch4
-        self.ncf['methane']['ch4_in_co2'][scen, year, :] = ch4*54.0
+        self.ncf['methane']['ch4_in_co2'][scen, year, :] = ch4*27.0
 
     def write_fertilization(self, scen, year, ferti):
         self.ncf['fertilization']['n_release'][scen, year, :] = ferti.release['N']
@@ -808,8 +808,8 @@ class Outputs():
                     
         self.ncf['balance']['C']['stand_c_balance_c'][scen, year, :] = standbal - ch4*(12/16.0)
         self.ncf['balance']['C']['soil_c_balance_c'][scen, year, :] = soilbal - ch4*(12/16.0)
-        self.ncf['balance']['C']['stand_c_balance_co2eq'][scen, year, :] = standbal * c_to_co2 - ch4*54.0
-        self.ncf['balance']['C']['soil_c_balance_co2eq'][scen, year, :] = soilbal * c_to_co2 - ch4*54.0
+        self.ncf['balance']['C']['stand_c_balance_co2eq'][scen, year, :] = standbal * c_to_co2 - ch4*27.0
+        self.ncf['balance']['C']['soil_c_balance_co2eq'][scen, year, :] = soilbal * c_to_co2 - ch4*27.0
         
     def write_ojanen(self, scen, year, Rhet, soil_co2_balance):
         self.ncf['ojanen']['Rhet'] [scen, year, :] = Rhet

@@ -82,7 +82,7 @@ class Allometry():
         spe = species_codes[sp]
         #leaf_scale ={1: 1.1, 2: 1.2, 3: 1.355, 4:1.4, 5: 1.5, 6: 1.6 }    # scales the leaf mass down from mineral soil, key is the site fertility class
         if sp == 2:
-            leaf_scale ={1: 1.5, 2: 1.5, 3: 1.5, 4:1.5, 5: 1.5, 6: 1.5 }    # scales the leaf mass down from mineral soil, key is the site fertility class        
+            leaf_scale ={1: 1.5, 2: 1.5, 3: 1.5, 4:1.5, 5: 1.5, 6: 1.5 }       # scales the leaf mass down from mineral soil, key is the site fertility class        
         else:
             leaf_scale ={1: 1.0, 2: 1.0, 3: 1.355, 4:1.4, 5: 1.45, 6: 1.5 }    # scales the leaf mass down from mineral soil, key is the site fertility class
 
@@ -136,15 +136,15 @@ class Allometry():
         rho = {'Pine': 400., 'Spruce': 380., 'Birch':480.}                          # wood density kg/m3
         sla= {'Pine': 6.8, 'Spruce': 7.25, 'Birch':14.0}                            # one-sided specific leaf area Härkönen et al. 2015 BER 20, 181-195      
     
-        #longevityLeaves = {'Pine':2.0, 'Spruce':4., 'Birch':1.}                     # yrs, life span of leaves and fine roots    
+        #longevityLeaves = {'Pine':2.0, 'Spruce':4., 'Birch':1.}                    # yrs, life span of leaves and fine roots    
         longevityLeaves = {'Pine':3.0, 'Spruce':5., 'Birch':1.}                     # yrs, life span of leaves and fine roots    
-        longevityFineRoots ={'Pine':0.7, 'Spruce':1., 'Birch':1.}                    # Yuan & Chen 2010, turnover 1.07 times per year    
-        # longevityBranch ={'Pine':22., 'Spruce':22., 'Birch':22.}                    # Pine Mäkinen 1999
-        # longevityCoarseRoots ={'Pine':22., 'Spruce':22., 'Birch':22.}               # assumption as branches
-        #longevityBranch ={'Pine':15., 'Spruce':20., 'Birch':20.}                    # Pine Mäkinen 1999
+        longevityFineRoots ={'Pine':0.7, 'Spruce':1., 'Birch':1.}                   # Yuan & Chen 2010, turnover 1.07 times per year    
+        # longevityBranch ={'Pine':22., 'Spruce':22., 'Birch':22.}                  # Pine Mäkinen 1999
+        # longevityCoarseRoots ={'Pine':22., 'Spruce':22., 'Birch':22.}             # assumption as branches
+        #longevityBranch ={'Pine':15., 'Spruce':20., 'Birch':20.}                   # Pine Mäkinen 1999
         #longevityCoarseRoots ={'Pine':15., 'Spruce':20., 'Birch':20}               # assumption as branches
         longevityBranch ={'Pine':20., 'Spruce':20., 'Birch':20.}                    # Pine Mäkinen 1999
-        longevityCoarseRoots ={'Pine':20., 'Spruce':20., 'Birch':20}               # assumption as branches
+        longevityCoarseRoots ={'Pine':20., 'Spruce':20., 'Birch':20}                # assumption as branches
 
         #********** Interpolation data ****************************************
         df['leaves'] = df['leaves'] / leaf_scale[sfc]                               # adjusting to peatland sites (Data: Hannu Hökkä 2022)

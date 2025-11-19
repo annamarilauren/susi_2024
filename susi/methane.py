@@ -30,5 +30,5 @@ class Methane():
         
         CH4mean = np.mean(CH4, axis=0)
     
-        return CH4, CH4mean, CH4mean*54. # convert to kg CO2-eq./ha/year, SGWP100 coefficient = 54 (Ojanen et al. 2021)
+        return CH4, CH4mean, CH4mean*27. # convert to kg CO2-eq./ha/year, SGWP100 coefficient https://ghgprotocol.org/sites/default/files/2024-08/Global-Warming-Potential-Values%20%28August%202024%29.pdf
 
