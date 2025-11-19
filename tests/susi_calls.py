@@ -17,14 +17,18 @@ wpath = r'C:/Users/laurenan/OneDrive - University of Helsinki/codes/susi_11/inpu
 
 
 mottifile = {'path':r'C:/Users/laurenan/OneDrive - University of Helsinki/codes/susi_11/inputs/',
-              'dominant':{1: 'motti viitasaari_mtkg.xls'},
+              'dominant':{1: 'CF_22.xlsx'},
               'subdominant':{0:'susi_motti_input_lyr_1.xlsx'},
               'under':{0:'susi_motti_input_lyr_2.xlsx'}} 
 
-wdata='parkano_weather.csv'
+#wdata='parkano_weather.csv'
+#wdata = 'Parkano_1993_reference.csv'
+#wdata = 'Parkano_2014_warm_dry.csv'
+wdata = 'Parkano_2008_warm_wet.csv'
 
-start_date = datetime.datetime(2000,1,1)
-end_date=datetime.datetime(2003,12,31)
+
+start_date = datetime.datetime(2014,1,1)
+end_date=datetime.datetime(2016,12,31)
 start_yr = start_date.year 
 end_yr = end_date.year
 yrs = (end_date - start_date).days/365.25
@@ -32,7 +36,7 @@ yrs = (end_date - start_date).days/365.25
 sarkaSim = 40.                                                                  # strip width, ie distance between ditches, m
 n = int(sarkaSim / 2)                                                           # number of computation nodes in the strip
 
-ageSim = {'dominant': 100.*np.ones(n),
+ageSim = {'dominant': 30.*np.ones(n),
           'subdominant': 0*np.ones(n),
           'under': 0*np.ones(n)}                                                         # age of the stand in each node
 

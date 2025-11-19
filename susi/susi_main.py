@@ -54,7 +54,7 @@ class Susi():
         out.initialize_scens()                                                     # write number scenario attributes: ditch depth,
         out.initialize_paras()                                                     # write tree species, sfc
         
-        lat=forc['lat'][0]; lon=forc['lon'][0]                                     # location of weather file, determines the simulation location
+        lat=forc['lat'].iloc[0]; lon=forc['lon'].iloc[0]                                     # location of weather file, determines the simulation location
         print ('      - Weather input:', wpara['description'], ', start:', start_yr, ', end:', end_yr) 
         print ('      - Latitude:', lat, ', Longitude:', lon )
     

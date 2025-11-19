@@ -274,11 +274,15 @@ def read_FMI_weather(ID, start_date,end_date, sourcefile=None):
     #time=pd.to_datetime(fmi['aika'],format='%Y%m%d')
     
     
+    #fmi=pd.read_csv(sourcefile, sep=';', header='infer', 
+    #                usecols=['OmaTunniste','Kunta','aika','longitude','latitude','t_mean','t_max','t_min','rainfall',\
+    #                         'radiation','hpa'], encoding= 'ISO-8859-1')
+ 
     fmi=pd.read_csv(sourcefile, sep=';', header='infer', 
                     usecols=['OmaTunniste','Kunta','aika','longitude','latitude','t_mean','t_max','t_min','rainfall',\
-                             'radiation','hpa'], encoding= 'ISO-8859-1')
- 
-    
+                             'radiation','hpa'], encoding= 'utf-8-sig')
+
+        
     #print pd.to_datetime(fmi['aika'][0], format="%Y%m%d")
     #print pd.tseries.tools.to_datetime(fmi['aika'][0], format="%Y%m%d")
     time=pd.to_datetime(fmi['aika'],format='%Y%m%d')
@@ -1074,7 +1078,7 @@ def assimilation_yr(ppara, dfforc, wt, afp, LAI, LAI_above):
     """Eq. 3a and 3b"""
     sim_len = len(Ta)    
     Xk = np.zeros(sim_len)                                                     # Acclimatiosation: Temerature adjustment with delay tau
-    Xk[0]=Ta[0]
+    Xk[0]=Ta.iloc[0]
     for n,T in enumerate(Ta[0:-1]):
         Xk[n+1] = Xk[n]+(T-Xk[n])/ppara['tau']
     Sk = np.maximum(Xk-ppara['X0'], np.zeros(sim_len))                           

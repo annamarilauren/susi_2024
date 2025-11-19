@@ -29,7 +29,7 @@ class Allometry():
         
         steps = np.array(np.diff(df['age']), dtype=float)
         idx = np.ravel(np.argwhere(steps<1.))+1
-        df['age'][idx]=df['age'][idx]+5./365.
+        df['age'].iloc[idx] = df['age'].iloc[idx]+5./365.
         
         if return_spe: 
             return df, df2['idSpe'][0]
