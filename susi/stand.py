@@ -380,11 +380,11 @@ class Stand():
         diameter = (self.dominant.Dg * self.dominant.stems 
                     + self.subdominant.Dg * self.subdominant.stems
                     + self.under.Dg * self.under.stems) / (self.dominant.stems + self.subdominant.stems + self.under.stems)
-        print ('Diameter', diameter)
+        #print ('Diameter', diameter)
         k = 4.35
         area_modifyer = np.clip(0.01, self.stems / ( (diameter/2.54)**(-1.605) * 10**k ), 1.0)
-        print (area_modifyer)
-        print (self.dominant.stems + self.subdominant.stems + self.under.stems)
+        #print (area_modifyer)
+        #print (self.dominant.stems + self.subdominant.stems + self.under.stems)
         #area_modifyer = 1
         
         nstat[0,:] = (N_supply * area_modifyer) / (self.n_demand + self.basNdemand + groundvegetation.nup)
