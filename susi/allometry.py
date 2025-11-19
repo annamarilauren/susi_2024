@@ -216,7 +216,7 @@ class Allometry():
         bmToLAI = interp1d(df['bm_noleaves'].values, df['leaves'].values* sla[spe]/10000., fill_value=(df['leaves'].values[0]* sla[spe]/10000., df['leaves'].values[-1]* sla[spe]/10000.), bounds_error=False)
         bmToHdom = interp1d(df['bm_noleaves'].values,df['hdom'].values, fill_value=(df['hdom'].values[0], df['hdom'].values[-1]), bounds_error=False)
         bmToStems = interp1d(df['bm_noleaves'].values, df['N'].values, fill_value=(df['N'].values[0], df['N'].values[-1]), bounds_error=False)
-        
+        bmToDg = interp1d(df['bm_noleaves'].values, df['Dg'].values, fill_value=(df['Dg'].values[0], df['Dg'].values[-1]), bounds_error=False)
  
         bmToFineRoots = interp1d(df['bm_noleaves'].values, df['roots_fine'].values, fill_value=(df['roots_fine'].values[0], df['roots_fine'].values[-1]), bounds_error=False)
         bmToNFineRoots = interp1d(df['bm_noleaves'].values, df['N_fine_roots'].values, fill_value=(df['N_fine_roots'].values[0], df['N_fine_roots'].values[-1]), bounds_error=False)
@@ -342,6 +342,8 @@ class Allometry():
         allometry_f['bmWithLeavesToLeafMass'] = bmWithLeavesToLeafMass
         allometry_f['bmToLAI'] = bmToLAI
         allometry_f['bmToHdom'] = bmToHdom
+        allometry_f['bmToDg'] = bmToDg
+        
         allometry_f['bmToYi'] = bmToYi
         allometry_f['bmToVol'] = bmToVol
         allometry_f['bmToBa'] = bmToBa
@@ -353,7 +355,7 @@ class Allometry():
         allometry_f['volToLogs'] = volToLogs
         allometry_f['volToPulp'] = volToPulp
         
-        allometry_f['bmToDbm'] = bmToDbm
+        #allometry_f['bmToDbm'] = bmToDbm
         allometry_f['bmToFinerootLitter'] = bmToFinerootLitter
         allometry_f['bmToWoodyLitter'] = bmToWoodyLitter
         allometry_f['bmToMortalityFineRoot'] =  bmToMortalityFineRoot

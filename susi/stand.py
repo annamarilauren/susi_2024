@@ -369,9 +369,28 @@ class Stand():
         # nstat[0,:] = N_supply / (self.n_demand + groundvegetation.nup)
         # nstat[1,:] = P_supply / (self.p_demand + groundvegetation.pup)
         # nstat[2,:] = K_supply / (self.k_demand + groundvegetation.kup)
-        nstat[0,:] = N_supply / (self.n_demand + self.basNdemand + groundvegetation.nup)
-        nstat[1,:] = P_supply / (self.p_demand + self.basPdemand + groundvegetation.pup)
-        nstat[2,:] = K_supply / (self.k_demand + self.basKdemand + groundvegetation.kup)
+        #nstat[0,:] = N_supply / (self.n_demand + self.basNdemand + groundvegetation.nup)
+        #nstat[1,:] = P_supply / (self.p_demand + self.basPdemand + groundvegetation.pup)
+        #nstat[2,:] = K_supply / (self.k_demand + self.basKdemand + groundvegetation.kup)
+
+
+        # Small trees and/or sparse canopies cannot use nutrients from far-away locations.
+        # The nutrient supply is limited according to the stand-density index (Reineke 1933).
+        # When canopy is closed, the term = 1. It may be necessary to adjust the constant k by tree species.
+        diameter = (self.dominant.Dg * self.dominant.stems 
+                    + self.subdominant.Dg * self.subdominant.stems
+                    + self.under.Dg * self.under.stems) / (self.dominant.stems + self.subdominant.stems + self.under.stems)
+        print ('Diameter', diameter)
+        k = 4.35
+        area_modifyer = np.clip(0.01, self.stems / ( (diameter/2.54)**(-1.605) * 10**k ), 1.0)
+        print (area_modifyer)
+        print (self.dominant.stems + self.subdominant.stems + self.under.stems)
+        #area_modifyer = 1
+        
+        nstat[0,:] = (N_supply * area_modifyer) / (self.n_demand + self.basNdemand + groundvegetation.nup)
+        nstat[1,:] = (P_supply * area_modifyer) / (self.p_demand + self.basPdemand + groundvegetation.pup)
+        nstat[2,:] = (K_supply * area_modifyer) / (self.k_demand + self.basKdemand + groundvegetation.kup)
+
 
         minnstat = np.min(nstat, axis=0)
         

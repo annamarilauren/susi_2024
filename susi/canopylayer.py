@@ -63,6 +63,7 @@ class Canopylayer():
         self.p_demand = np.zeros(ncols, dtype=float)                           # P demand exluding leaves kg/tree/yr 
         self.k_demand = np.zeros(ncols, dtype=float)                           # K demand exluding leaves kg/tree/yr
         self.hdom = np.zeros(ncols, dtype=float)                               # domainant height m in the canopy layer   
+        self.Dg = np.zeros(ncols, dtype=float)                                 # mean diameter cm in the canopy layer   
         self.leafarea = np.zeros(ncols, dtype=float)                           # leaf area in the canopy layer m2 m-2 tree-1
         self.lai_above = np.zeros(ncols, dtype=float)                          # one sided leaf area above this canopy layer, m2 m-2 tree-1 
         self.leafmass = np.zeros(ncols, dtype=float)                           # basic leaf mass kg/tree 
@@ -136,6 +137,8 @@ class Canopylayer():
 
                 self.basalarea[ixs[m]] = self.allodic[m].allometry_f['ageToBa'](self.agearr[ixs[m]])      # stem basal area from age m2/tree  
                 self.hdom[ixs[m]] = self.allodic[m].allometry_f['ageToHdom'](self.agearr[ixs[m]])         # dominant height m
+                self.Dg[ixs[m]] = self.allodic[m].allometry_f['bmToDg'](self.biomass[ixs[m]])         # mean diameter height m
+                
                 self.leafarea[ixs[m]] = self.allodic[m].allometry_f['bmToLAI'](self.biomass[ixs[m]])*nut_stat[ixs[m]]  # one sided LAI from the stem biomass M2/m2/tree
                 self.leafmass[ixs[m]] = self.allodic[m].allometry_f['ageToLeaves'](self.agearr[ixs[m]])*nut_stat[ixs[m]]
                 self.species[ixs[m]] = self.allodic[m].sp
@@ -168,6 +171,9 @@ class Canopylayer():
                 self.basalarea[ixs[m]] = self.allodic[m].allometry_f['bmToBa'](bm[ixs[m]]) 
                 self.biomass[ixs[m]] = bm[ixs[m]] 
                 self.hdom[ixs[m]] = self.allodic[m].allometry_f['bmToHdom'](bm[ixs[m]]) 
+                self.Dg[ixs[m]] = self.allodic[m].allometry_f['bmToDg'](bm[ixs[m]]) 
+                
+                
                 self.leafarea[ixs[m]] = self.allodic[m].allometry_f['bmToLAI'](bm[ixs[m]]) 
                 self.leafmass[ixs[m]] = self.allodic[m].allometry_f['bmToLeafMass'](bm[ixs[m]]) 
                 #self.volume[ixs[m]] = self.allodic[m].allometry_f['bmToYi'](bm[ixs[m]]) 
