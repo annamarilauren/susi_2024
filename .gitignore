@@ -1,0 +1,14 @@
+# Ignore mac system files
+.DS_Store
+
+# Ignore python compiled files
+__pycache__/
+*.pyc
+
+
+outputs/
+tests/annastina fig reality.py
+tests/annastina_figs.py
+tests/annastina_figs_2.py
+tests/ash_figs.py
+tests/vesitalous_fig.py
